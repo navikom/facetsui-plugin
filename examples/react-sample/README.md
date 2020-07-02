@@ -16,7 +16,7 @@ function App() {
   const onData = (data: {[key: string]: any}) => {
     console.log(data);
   };
-  const [muiEditor] = React.useState(
+  const [facetsUIEditor] = React.useState(
     new FacetsUIPlugin({
       uid: 'change_to_your_uid',
       secret: 'change_to_your_secret',
@@ -28,20 +28,20 @@ function App() {
   const projectData = {/*here is a project data*/};
 
   const setProjectData = (project: {[key: string]: any}) => {
-    muiEditor.setProject(project);
+    facetsUIEditor.setProject(project);
   };
 
   React.useEffect(() => {
-    muiEditor
-      .getToken(muiEditor.config.uid || "", muiEditor.config.secret || "")
+    facetsUIEditor
+      .getToken(facetsUIEditor.config.uid || "", facetsUIEditor.config.secret || "")
       .then((token: string) => {
         // facetsUIEditor.startViewer(token); if you want to start Viewer
-        muiEditor.startEditor(token);
+        facetsUIEditor.startEditor(token);
       });
     return () => {
-      muiEditor.dispose();
+      facetsUIEditor.dispose();
     }
-  }, [muiEditor]);
+  }, [facetsUIEditor]);
   return (
     <React.Fragment>
       <div id="facetsui-plugin-container" />
