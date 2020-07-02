@@ -1,0 +1,11 @@
+.idea
+
+src/
+!examples/react-sample/src
+test/
+node_modules/
+
+rollup.config.js
+package-lock.json
+
+examples/react-sample/node_modules/

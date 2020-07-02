@@ -1,0 +1,50 @@
+{
+  "name": "facetsui-plugin",
+  "version": "1.0.0",
+  "description": "FacetsUI editor plugin",
+  "browser": "dist/facetsui-plugin.min.js",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/navikom/facetsui-plugin.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/navikom/facetsui-plugin/issues"
+  },
+  "homepage": "https://github.com/navikom/facetsui-plugin#readme",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "facetsui-plugin.min.js",
+    "FacetsUIPlugin.d.ts",
+    "FacetsUIPlugin.js"
+  ],
+  "scripts": {
+    "build": "tsc --declaration",
+    "test": "jest",
+    "ci": "(npm run clean && npm run test-build && npm run rollup) & npm t & wait",
+    "preversion": "./preversion.sh",
+    "version": "./version.sh",
+    "rollup": "rollup -c",
+    "test-build": "npm run build && node test-build.js",
+    "clean": "rm -rf dist",
+    "dist": "cp package.json ./dist/ && cp readme.md ./dist/ && cd dist && npm publish"
+  },
+  "author": "navikom",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "jest": "^25.4.0",
+    "rollup": "^2.7.1",
+    "rollup-plugin-babel-minify": "^10.0.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "ts-jest": "^25.4.0",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@types/node": "^13.13.2"
+  }
+}

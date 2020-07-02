@@ -1,0 +1,14 @@
+.App {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+#editor,
+#viewer {
+  display: block;
+  background: #ffffff;
+  border: none;
+  height: 100vh;
+  width: 100vw;
+}

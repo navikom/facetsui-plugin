@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Muiditor browser sample</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://unpkg.com/facetsui-plugin@1.7.2/dist/facetsui-plugin.min.js"></script>
+    <style>
+        .App {
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+        }
+
+        #editor {
+            display: block;
+            background: #ffffff;
+            border: none;
+            height: 100vh;
+            width: 100vw;
+        }
+    </style>
+</head>
+<body>
+<div id="facetsui-plugin-container" class="App" />
+<button id="btn">Set Another Project</button>
+</body>
+<script>
+  var onLoad = (data) => {
+    console.log(data);
+  };
+  var onData = (data) => {
+    console.log(data);
+  };
+  var onSaveComponent = (data, base64) => {
+    console.log(data, base64);
+  };
+
+  document.getElementById('btn').onclick = () => {
+    setProjectData(projectData);
+  };
+
+  var facetsUIEditor = new FacetsUIPlugin({
+    uid: 'change_to_your_uid',
+    secret: 'change_to_your_secret',
+    container: 'facetsui-plugin-container',
+    data: {/* initial project data */},
+    onLoad,
+    onData,
+    onSaveComponent });
+
+  facetsUIEditor
+    .getToken(facetsUIEditor.config.uid || '', facetsUIEditor.config.secret || '')
+    .then((token) => {
+      // facetsUIEditor.startViewer(token); if you want to start Viewer
+      facetsUIEditor.startEditor(token);
+    });
+
+  var projectData = {/*here is a project data*/};
+
+  var setProjectData = (project) => {
+    facetsUIEditor.setProject(project);
+  };
+
+</script>
+</html>
